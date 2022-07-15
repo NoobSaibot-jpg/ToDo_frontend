@@ -10,11 +10,6 @@ export default function ToDoItem(props) {
   const [checked, setChecked] = useState(props.checked)
   
 
-    const deleteClick = ()=>{
-        axios.delete('https://noobsaibot-todo.herokuapp.com/api/del', {id: props.delId})
-        .then(console.log(props.delId))
-      }
-
       const complitedClick =()=>{
         setChecked(!checked)
         axios.put('https://noobsaibot-todo.herokuapp.com/api/put', {id: props.delId, complited: !checked})
@@ -25,14 +20,14 @@ export default function ToDoItem(props) {
       <Box className='todo'>
           <Switch
             checked={checked}
-            onChange={complitedClick}
+            onClick={complitedClick}
             inputProps={{ 'aria-label': 'controlled' }}
         />
         <h1 className={checked?"todo_title":null}>{props.title}</h1>
         <Button
          variant="text" 
          color='error'
-         onClick={deleteClick}>
+         onClick={props.deleteClick}>
              <DeleteIcon/>
         </Button>
       </Box>

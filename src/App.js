@@ -19,6 +19,11 @@ function App() {
     .then(setLoading(true))
   }
 
+  const deleteClick = (id)=>{
+    axios.post('https://noobsaibot-todo.herokuapp.com/api/del', {id: id})
+    .then(setLoading(true))
+  }
+
   useEffect(() => {
     axios.get('https://noobsaibot-todo.herokuapp.com/api/get')
     .then(res=>setToDoS(res.data))
@@ -35,7 +40,7 @@ function App() {
          title={i.title} 
          checked={i.complited} 
          key={i._id} 
-         delId={i._id}/>)}
+         deleteClick={()=>deleteClick(i._id)}/>)}
       </Container>
     </div>
   );
