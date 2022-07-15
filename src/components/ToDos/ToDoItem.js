@@ -12,7 +12,7 @@ export default function ToDoItem(props) {
 
       const complitedClick =()=>{
         setChecked(!checked)
-        axios.put('https://noobsaibot-todo.herokuapp.com/api/put', {id: props.delId, complited: !checked})
+        axios.post('https://noobsaibot-todo.herokuapp.com/api/put', {id: props.delId, complited: !checked})
         .then(console.log(props.delId))
       }
     
